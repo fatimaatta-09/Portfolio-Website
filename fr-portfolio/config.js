@@ -26,8 +26,8 @@ window.CFG = {
   location:   "Abbottabad, Pakistan · Open to remote",
 
   /* ── Public profile links (safe to commit) ─────────────── */
-  github:   "https://github.com/fatima-rehman",
-  linkedin: "https://linkedin.com/in/fatima-rehman",
+  github:   "https://github.com/fatimaatta-09",
+  linkedin: "https://linkedin.com/in/fatima-rehman09",
 
   /* ── Form endpoint (Web3Forms — email never in code) ────── */
   /* Get your key at https://web3forms.com — free, no backend */
@@ -51,7 +51,7 @@ window.CFG = {
       color:  "cyan",
       desc:   "C++ DSA-based terminal security tool. Hash maps, queues, and threshold trees detect suspicious behavior in real time. Auto-triggers system shutdown at critical threat levels. Runs on Linux and Windows.",
       tech:   ["C++", "DSA", "Linux", "Windows"],
-      github: "https://github.com/fatima-rehman",
+      github: "https://github.com/alikamran21/Behavioral-Fingerprint-Based-Intrusion-Detection-System.git",
       live:   "",
       award:  "",
     },
@@ -61,17 +61,18 @@ window.CFG = {
       color:  "purple",
       desc:   "OpenCV Haar Cascade + LBPH on Raspberry Pi. Full pipeline from camera input to face recognition to servo-controlled door lock.",
       tech:   ["Python", "OpenCV", "Raspberry Pi", "Servo"],
-      github: "https://github.com/fatima-rehman",
+      github: "https://github.com/fatimaatta-09/AI-Based-Face-Recognition-Web.git",
       live:   "",
       award:  "",
     },
     {
-      title:  "Python Web Applications ×3",
+      title:  "Python Web Applications ×2",
       badge:  "WEB DEV",
       color:  "green",
       desc:   "Three full-stack apps with Flask backend, HTML/CSS frontend, PostgreSQL database. Authentication, schema design, REST APIs.",
       tech:   ["Python", "Flask", "PostgreSQL", "HTML/CSS"],
-      github: "https://github.com/fatima-rehman",
+      github: ["https://github.com/fatimaatta-09/Temporal-Instruction-Micro-Engine-.git",
+        "https://github.com/alikamran21/Serenitycare.git"],
       live:   "",
       award:  "",
     },
@@ -81,7 +82,7 @@ window.CFG = {
       color:  "orange",
       desc:   "Arduino + ultrasonic sensor autonomous navigation in dynamic environments with custom C++ pathfinding logic.",
       tech:   ["Arduino", "C++", "Ultrasonic Sensor"],
-      github: "",
+      github: "https://github.com/fatimaatta-09/Bibble-Intruder-Detector.git",
       live:   "",
       award:  "1st Place — GIKI Innovation Summit, Feb 2025",
     },
@@ -101,7 +102,7 @@ window.CFG = {
       color:  "cyan",
       desc:   "PIR sensor-driven real-time surveillance robot with intelligent directional tracking and alert output.",
       tech:   ["Arduino", "C++", "PIR Sensor"],
-      github: "",
+      github: "https://github.com/fatimaatta-09/Bibble-Intruder-Detector.git",
       live:   "",
       award:  "",
     },
@@ -174,7 +175,7 @@ window.CFG = {
 
   /* ── Updates / changelog ─────────────────────────────────── */
   updates: [
-    { date:"Jun 2026",      tag:"PORTFOLIO",  title:"FR-OS Portfolio v3 launched",                    desc:"Modular codebase, GitHub Actions deploy, Kali wallpaper, Formspree contact — zero hardcoded email." },
+    { date:"Jun 2026",      tag:"PORTFOLIO",  title:"FR-OS Portfolio launched",                    desc:"Modular codebase, GitHub Actions deploy, Kali wallpaper, Formspree contact — zero hardcoded email." },
     { date:"2025",          tag:"RESEARCH",   title:"EEG Research Paper in Progress",                 desc:"97.71% accuracy achieved with SVM + Random Forest. Targeting IEEE / Springer submission." },
     { date:"Dec 2025",      tag:"CERT",       title:"Linux Foundation + IBM + Michigan Certs",        desc:"4 certifications earned: Open Source Dev Methods, Python Data Structures, Linux Shell Scripting V2, Hands-on Linux Scripting." },
     { date:"Jul 2025",      tag:"CERT",       title:"OpenCV University Certifications",               desc:"Computer Vision with OpenCV (Beginner–Intermediate) and Python for Beginners." },
