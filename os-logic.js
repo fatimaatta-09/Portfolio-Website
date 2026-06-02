@@ -172,7 +172,6 @@
       w.style.left = Math.min(p.x, mw - 60) + 'px';
       w.style.top  = Math.min(p.y, mh - 60) + 'px';
     }
-    w.style.display = 'flex';
     bringFront(w);
     opened[name] = true;
     dotOn(name);
@@ -183,8 +182,7 @@
   function closeWin(name) {
     var w = document.getElementById('win-' + name);
     if (!w) return;
-    popOut(w, function () { w.style.display = 'none'; });
-    opened[name] = false;
+    popOut(w, function () { opened[name] = false; });
     dotOff(name);
   }
 
@@ -200,18 +198,25 @@
 
   /* ── Pop animations ─────────────────────────────────────── */
   function popIn(w) {
-    w.style.transition = 'opacity .17s ease, transform .17s cubic-bezier(.34,1.5,.64,1)';
-    w.style.opacity = '0'; w.style.transform = 'scale(.93) translateY(6px)';
+    w.style.display = 'flex';
+    w.style.transition = 'opacity .2s cubic-bezier(.34,1.56,.64,1), transform .2s cubic-bezier(.34,1.56,.64,1)';
+    w.style.opacity = '0';
+    w.style.transform = 'scale(0.92) translateY(8px)';
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        w.style.opacity = '1'; w.style.transform = 'scale(1) translateY(0)';
+        w.style.opacity = '1';
+        w.style.transform = 'scale(1) translateY(0)';
       });
     });
   }
   function popOut(w, cb) {
-    w.style.transition = 'opacity .13s ease, transform .13s ease';
-    w.style.opacity = '0'; w.style.transform = 'scale(.95) translateY(4px)';
-    setTimeout(cb, 150);
+    w.style.transition = 'opacity .15s ease, transform .15s ease';
+    w.style.opacity = '0';
+    w.style.transform = 'scale(0.95) translateY(4px)';
+    setTimeout(function() {
+      w.style.display = 'none';
+      cb();
+    }, 160);
   }
 
   /* ── Skill bar animation ────────────────────────────────── */
