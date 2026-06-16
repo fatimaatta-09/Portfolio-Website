@@ -7,12 +7,11 @@ import {
 // contact form posts directly to Web3Forms; no backend client needed
 import dragonAsset from "@/assets/kali-dragon.png";
 import {
-  Terminal as IconTerminal, User as IconUser, Zap as IconZap, FolderGit2 as IconProjects,
-  Shield as IconShield, Brain as IconBrain, Trophy as IconTrophy, Mail as IconMail,
+  Brain as IconBrain, Mail as IconMail,
   FileText as IconFile, CheckCircle2, AlertTriangle, RefreshCw, Loader2,
   Github, ExternalLink, Bug, Network, ScanSearch, Radar, Cpu, Code2, Database,
   Globe, Activity, Sparkles, Award, Lock, Eye, Bot, Rocket, GraduationCap,
-  Medal, BookOpen, FileBadge, Mail, Linkedin, MapPin,
+  Medal, BookOpen, FileBadge, Mail, Linkedin, MapPin, TerminalSquare, Fingerprint,
   type LucideIcon,
 } from "lucide-react";
 
@@ -44,21 +43,21 @@ const CERT_ICONS: Record<string, LucideIcon> = {
 const WEB3FORMS_ACCESS_KEY = "b5e09d6c-d151-460d-b38f-0007a4872635";
 
 const ICONS: Record<string, LucideIcon> = {
-  terminal: IconTerminal, about: IconUser, skills: IconZap, projects: IconProjects,
-  tools: IconShield, research: IconBrain, certs: IconTrophy, contact: IconMail, resume: IconFile,
+  terminal: TerminalSquare, about: Fingerprint, skills: Cpu, projects: Network,
+  tools: ScanSearch, research: IconBrain, certs: Award, contact: IconMail, resume: Database,
 };
 
-// Vivid per-icon brand colors — drive icon stroke + glow + click burst
+// Vivid per-icon brand colors — drive icon stroke + click burst
 const ICON_COLORS: Record<string, string> = {
-  terminal: "#34d399",   // emerald
-  about:    "#38bdf8",   // sky
-  skills:   "#a855f7",   // violet
-  projects: "#22d3ee",   // cyan
-  tools:    "#f87171",   // coral red
-  research: "#c084fc",   // light violet
-  certs:    "#fbbf24",   // amber
-  contact:  "#2dd4bf",   // teal
-  resume:   "#fb923c",   // orange
+  terminal: "#00FFFF",   // kali cyan — hacker terminal
+  about:    "#4ADE80",   // bright green — biometric identity
+  skills:   "#F97316",   // vivid orange — CPU power
+  projects: "#38BDF8",   // sky blue — networked / interconnected
+  tools:    "#FF4D6D",   // hot red — offensive tools
+  research: "#D946EF",   // bright purple — AI / ML research
+  certs:    "#FFD60A",   // electric gold — achievement
+  contact:  "#2DD4BF",   // teal — communication
+  resume:   "#FB923C",   // bright orange — data / document
 };
 
 type ResumeState = "checking" | "ok" | "fail";
@@ -108,7 +107,7 @@ function ResumeStatus({ url, compact = false }: { url: string; compact?: boolean
 const AppIcon = ({ id, size = 22, color }: { id: string; size?: number; color?: string }) => {
   const I = ICONS[id];
   const c = color ?? ICON_COLORS[id];
-  return I ? <I size={size} strokeWidth={2} color={c} style={c ? { filter: `drop-shadow(0 0 6px ${c}aa)` } : undefined} /> : null;
+  return I ? <I size={size} strokeWidth={2.5} color={c} /> : null;
 };
 
 
