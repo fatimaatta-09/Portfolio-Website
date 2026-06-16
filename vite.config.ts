@@ -7,6 +7,11 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // Force-enable the nitro deploy build with the Cloudflare Pages preset. Without this, a
+  // self-hosted build outside the Lovable sandbox skips nitro ("No Lovable context detected
+  // — skipping nitro deploy plugin"), so no deploy output (dist/_worker.js, _routes.json,
+  // wrangler config) is produced and the Cloudflare Pages deploy fails.
+  nitro: { preset: "cloudflare-pages" },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
