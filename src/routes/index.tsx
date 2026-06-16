@@ -726,6 +726,7 @@ function normalizeUrl(raw: string) {
   if (!u) return "";
   if (/^(https?:|mailto:|tel:)/i.test(u)) return u;
   if (u.startsWith("//")) return "https:" + u;
+  if (u.startsWith("/")) return u;
   return "https://" + u.replace(/^\/+/, "");
 }
 
