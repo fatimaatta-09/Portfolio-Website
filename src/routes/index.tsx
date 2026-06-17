@@ -47,17 +47,17 @@ const ICONS: Record<string, LucideIcon> = {
   tools: ScanSearch, research: IconBrain, certs: Award, contact: IconMail, resume: Database,
 };
 
-// Vivid per-icon brand colors — drive icon stroke + click burst
+// Vivid per-icon brand colors — bright, matte, professional
 const ICON_COLORS: Record<string, string> = {
-  terminal: "#00FFFF",   // kali cyan — hacker terminal
-  about:    "#4ADE80",   // bright green — biometric identity
-  skills:   "#F97316",   // vivid orange — CPU power
-  projects: "#38BDF8",   // sky blue — networked / interconnected
-  tools:    "#FF4D6D",   // hot red — offensive tools
-  research: "#D946EF",   // bright purple — AI / ML research
-  certs:    "#FFD60A",   // electric gold — achievement
-  contact:  "#2DD4BF",   // teal — communication
-  resume:   "#FB923C",   // bright orange — data / document
+  terminal: "#22D3EE",   // cyan-400    — bright clean terminal cyan
+  about:    "#4ADE80",   // green-400   — vivid identity green
+  skills:   "#FB923C",   // orange-400  — warm CPU orange
+  projects: "#60A5FA",   // blue-400    — solid network blue
+  tools:    "#F87171",   // red-400     — assertive tool red
+  research: "#C084FC",   // purple-400  — rich AI/ML purple
+  certs:    "#FBBF24",   // amber-400   — professional gold
+  contact:  "#2DD4BF",   // teal-400    — clean communication teal
+  resume:   "#F97316",   // orange-500  — deep document orange
 };
 
 type ResumeState = "checking" | "ok" | "fail";
