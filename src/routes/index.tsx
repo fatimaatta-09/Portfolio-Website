@@ -47,17 +47,17 @@ const ICONS: Record<string, LucideIcon> = {
   tools: ScanSearch, research: IconBrain, certs: Award, contact: IconMail, resume: Database,
 };
 
-// Vivid per-icon brand colors — bright, matte, professional
+// MD Accent palette — built for dark backgrounds, high contrast, matte
 const ICON_COLORS: Record<string, string> = {
-  terminal: "#22D3EE",   // cyan-400    — bright clean terminal cyan
-  about:    "#4ADE80",   // green-400   — vivid identity green
-  skills:   "#FB923C",   // orange-400  — warm CPU orange
-  projects: "#60A5FA",   // blue-400    — solid network blue
-  tools:    "#F87171",   // red-400     — assertive tool red
-  research: "#C084FC",   // purple-400  — rich AI/ML purple
-  certs:    "#FBBF24",   // amber-400   — professional gold
-  contact:  "#2DD4BF",   // teal-400    — clean communication teal
-  resume:   "#F97316",   // orange-500  — deep document orange
+  terminal: "#00E5FF",   // light-blue A400 — electric cyan-blue
+  about:    "#69F0AE",   // green A200      — vivid mint green
+  skills:   "#FFAB40",   // orange A200     — warm punchy orange
+  projects: "#448AFF",   // blue A200       — sharp vivid blue
+  tools:    "#FF5252",   // red A200        — assertive red
+  research: "#E040FB",   // purple A200     — vivid electric purple
+  certs:    "#FFD740",   // amber A200      — vivid gold
+  contact:  "#1DE9B6",   // teal A400       — vivid teal
+  resume:   "#FF6D00",   // deep-orange A700 — rich vivid orange
 };
 
 type ResumeState = "checking" | "ok" | "fail";
@@ -107,7 +107,7 @@ function ResumeStatus({ url, compact = false }: { url: string; compact?: boolean
 const AppIcon = ({ id, size = 22, color }: { id: string; size?: number; color?: string }) => {
   const I = ICONS[id];
   const c = color ?? ICON_COLORS[id];
-  return I ? <I size={size} strokeWidth={2.5} color={c} /> : null;
+  return I ? <I size={size} strokeWidth={3} color={c} /> : null;
 };
 
 
