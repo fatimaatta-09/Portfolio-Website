@@ -2,21 +2,23 @@ export type SkillGroup = { title: string; gradient: string; items: { name: strin
 
 export const profile = {
   name: "Fatima Rehman",
-  role: "CYBERSECURITY SOPHOMORE & AI RESEARCHER",
+  role: "GRAPHIC DESIGNER · CYBERSECURITY SOPHOMORE · AI RESEARCHER",
   initials: "FR",
-  bio: "Cybersecurity sophomore at GIKI and active AI researcher working on EEG-based Alzheimer's classification. I focus on offensive security, penetration testing and secure software development — building CLI security tools, hunting vulnerabilities in web apps, and shipping full-stack projects on Linux. Comfortable across Burp Suite, Wireshark, OWASP ZAP, Nmap and Kali Linux, and equally at home writing Python, C++ and SQL.",
+  bio: "Creative graphic designer and cybersecurity sophomore at GIKI. I craft compelling brand identities, UI/UX prototypes, and social media visuals using Canva, Figma, and the Adobe Suite — bridging aesthetics with technical precision. Also an active AI researcher working on EEG-based Alzheimer's classification, and an offensive security enthusiast comfortable with Burp Suite, Wireshark, and Kali Linux.",
   tags: [
+    { label: "Graphic Design", cls: "tag-pink" },
+    { label: "Brand Identity", cls: "tag-pink" },
+    { label: "UI/UX Design", cls: "tag-purple" },
+    { label: "Canva · Figma", cls: "tag-orange" },
     { label: "Cybersecurity", cls: "tag-cyan" },
-    { label: "Pen Testing", cls: "tag-cyan" },
-    { label: "Web Security", cls: "tag-purple" },
+    { label: "AI Researcher", cls: "tag-green" },
     { label: "Full-Stack Dev", cls: "tag-green" },
     { label: "Linux", cls: "tag-orange" },
-    { label: "Networking", cls: "tag-purple" },
   ],
   stats: [
     { val: "6+", lbl: "PROJECTS" },
     { val: "2×", lbl: "NAT. CHAMPION" },
-    { val: "24/7", lbl: "HACKING" },
+    { val: "4+", lbl: "DESIGN WORKS" },
   ],
   contact: {
     email: "fatta929@gmail.com",
@@ -122,7 +124,10 @@ export const skillTree: SkillBranch[] = [
 ];
 
 
+
 export const tools = [
+  ["🎨","Canva"],["🖌","Figma"],["📱","Adobe XD"],["✏","Procreate"],
+  ["🖋","Typography"],["📐","Grid Systems"],["🎞","Storyboarding"],["🎬","Spline 3D"],
   ["🔓","Burp Suite"],["🦈","Wireshark"],["🕷","OWASP ZAP"],["🎣","GoPhish"],
   ["🐉","Kali Linux"],["🔭","Nmap"],["🐳","Docker"],["🐧","Linux Bash"],
   ["🐙","Git / GitHub"],["🐍","Python"],["🧠","PsychoPy"],["📊","Jira"],
@@ -149,11 +154,168 @@ export const certs: Cert[] = [
   { kind: "PLANNED", icon: "📜", bg: "rgba(255,255,255,0.05)", name: "CompTIA Security+", org: "Self-study track", status: "PLANNED", statusCls: "status-plan", link: "https://www.comptia.org/certifications/security" },
 ];
 
+// ── Design Projects ─────────────────────────────────────────────────────────
+export type DesignProject = {
+  id: string;
+  title: string;
+  category: "branding" | "uiux" | "motion" | "social" | "daily";
+  desc: string;
+  tools: string[];
+  image: string;
+  images?: string[];
+  highlights: string[];
+  color: string;
+  badge?: string;
+};
+
+export const designProjects: DesignProject[] = [
+  // ── RESTAURANT SOCIAL MEDIA (pinned first — real AI-assisted client work) ──
+  {
+    id: "restaurant-social",
+    title: "Restaurant Social Media Pack",
+    category: "social",
+    badge: "REAL CLIENT WORK · AI-ASSISTED",
+    desc: "Full social media content system for a local restaurant — scroll-stopping Instagram posts, Stories, menu highlights and weekend promos. Designed end-to-end using Canva + AI image generation for a genuine small-business brand voice.",
+    tools: ["Canva", "Figma"],
+    image: "/design/restaurant-insta-post.png",
+    images: [
+      "/design/restaurant-insta-post.png",
+      "/design/restaurant-story.png",
+      "/design/restaurant-menu.png",
+      "/design/restaurant-promo.png",
+      "/design/restaurant-grid.png",
+    ],
+    highlights: [
+      "Instagram feed post — moody dark aesthetic, bold editorial typography",
+      "Story template — retro-modern pizza night, Gen-Z energy",
+      "Menu carousel slide — clean split-layout with food photography",
+      "Weekend promo post — bright & funky, tacos + Happy Hour badge",
+      "Full 9-grid Instagram feed plan — cohesive warm-tone visual identity",
+    ],
+    color: "#FF6B35",
+  },
+  // ── USER'S REAL DESIGNS ──
+  {
+    id: "farewell-invite",
+    title: "Farewell Invitation",
+    category: "daily",
+    badge: "MY ORIGINAL DESIGN",
+    desc: "A warm, vintage-style farewell invitation design for the Cyber Security batch at GIKI. Features elegant script typography, layered textured backgrounds, and a cohesive warm color palette.",
+    tools: ["Canva"],
+    image: "/design/farewell.png",
+    highlights: [
+      "Vintage textured aesthetic with floral and stamp elements",
+      "Elegant script typography for the main heading",
+      "Personalized message layout with clear event details",
+    ],
+    color: "#D4A373",
+  },
+  {
+    id: "batch35-poster",
+    title: "Welcome Batch 35 Poster",
+    category: "daily",
+    badge: "MY ORIGINAL DESIGN",
+    desc: "A bold, energetic poster welcoming Batch 35. Features a striking red smoke effect, tech-inspired background elements, and fun robot characters wearing fedoras and sunglasses.",
+    tools: ["Canva"],
+    image: "/design/batch35.png",
+    highlights: [
+      "High-contrast red and white typography on a tech-themed background",
+      "Dynamic red smoke visual element",
+      "Playful robot characters reflecting the tech/cyber theme",
+    ],
+    color: "#C1121F",
+  },
+  // ── EVERYDAY DESIGNS ──
+  {
+    id: "everyday-designs",
+    title: "Everyday Canva Designs",
+    category: "daily",
+    badge: "REAL EVERYDAY WORK · CANVA",
+    desc: "The real stuff — college event flyers, birthday posts, cafe daily specials, and quote templates. These are the designs people actually build themselves for their societies, friends, and small pages.",
+    tools: ["Canva", "Figma"],
+    image: "/design/everyday-event-flyer.png",
+    images: [
+      "/design/everyday-event-flyer.png",
+      "/design/everyday-birthday.png",
+      "/design/everyday-cafe.png",
+      "/design/everyday-quote.png",
+    ],
+    highlights: [
+      "College Culture Fest 2025 poster — navy + gold, flat Canva layout",
+      "Birthday celebration post — pastel flat design for WhatsApp/Instagram",
+      "Neighbourhood cafe daily special — warm tones, handwritten-feel",
+      "Motivational quote template — lavender minimal, personal brand style",
+    ],
+    color: "#A855F7",
+  },
+  {
+    id: "brand-identity",
+    title: "Brand Identity System",
+    category: "branding",
+    desc: "End-to-end brand identity: logo design, color palette, typography scale, and a full brand guidelines document — built in Canva & Illustrator.",
+    tools: ["Canva", "Adobe Illustrator", "Figma"],
+    image: "/design/brand-identity.png",
+    highlights: [
+      "Geometric logo mark with 3 variants (primary, mono, icon)",
+      "Curated 5-color palette with accessibility-checked contrast ratios",
+      "Typographic system: Display / Body / Caption hierarchy",
+      "Brand guidelines PDF: 12-page style guide",
+    ],
+    color: "#FFD740",
+  },
+  {
+    id: "social-media-pack",
+    title: "Social Media Campaign Pack",
+    category: "branding",
+    desc: "A cohesive social media design system — Instagram posts, LinkedIn banners, story templates, and carousel layouts in a trendy 2025 aesthetic.",
+    tools: ["Canva", "Adobe Photoshop"],
+    image: "/design/social-media-pack.png",
+    highlights: [
+      "12-post Instagram grid with coral-to-violet gradient system",
+      "3 carousel templates with bold editorial typography",
+      "LinkedIn banner + profile photo frame kit",
+      "Animated story templates (GIF export)",
+    ],
+    color: "#FF4081",
+  },
+  {
+    id: "mobile-app-ui",
+    title: "Wellness App UI/UX Prototype",
+    category: "uiux",
+    desc: "High-fidelity mobile app prototype for a wellness/lifestyle app — full design from wireframes to interactive Figma prototype with dark mode.",
+    tools: ["Figma", "Adobe XD", "Procreate"],
+    image: "/design/mobile-app-ui.png",
+    highlights: [
+      "User research → persona → information architecture",
+      "Lo-fi wireframes to hi-fi screens (20+ screens)",
+      "Interactive Figma prototype with micro-animations",
+      "Dark mode UI: glassmorphism + purple-cyan gradient system",
+    ],
+    color: "#7C4DFF",
+  },
+  {
+    id: "motion-graphics",
+    title: "Motion Graphics Campaign",
+    category: "motion",
+    desc: "Cyberpunk-meets-editorial motion graphics concept: animated poster series with glitch effects, neon typography, and layered visual storytelling.",
+    tools: ["Adobe After Effects", "Adobe Photoshop", "Canva"],
+    image: "/design/motion-graphics.png",
+    highlights: [
+      "3-poster series with unified neon cyberpunk aesthetic",
+      "Glitch text animation loops (3-5 sec GIFs)",
+      "Chromatic aberration + grain texture treatment",
+      "Storyboard: 8-frame motion design narrative",
+    ],
+    color: "#00E5FF",
+  },
+];
+
 export const dockItems = [
   { id: "terminal", icon: "💻", label: "Terminal", bg: "linear-gradient(135deg,rgba(110,231,183,0.5),rgba(125,211,252,0.4))" },
   { id: "about", icon: "👤", label: "About", bg: "linear-gradient(135deg,rgba(125,211,252,0.5),rgba(167,139,250,0.4))" },
   { id: "skills", icon: "⚡", label: "Skills", bg: "linear-gradient(135deg,rgba(167,139,250,0.5),rgba(244,114,182,0.4))" },
   { id: "projects", icon: "🗂", label: "Projects", bg: "linear-gradient(135deg,rgba(125,211,252,0.5),rgba(110,231,183,0.4))" },
+  { id: "design", icon: "🎨", label: "Design", bg: "linear-gradient(135deg,rgba(255,64,129,0.5),rgba(252,211,77,0.4))" },
   { sep: true } as never,
   { id: "tools", icon: "🛡", label: "Tools", bg: "linear-gradient(135deg,rgba(248,113,113,0.5),rgba(251,146,60,0.4))" },
   { id: "research", icon: "🧠", label: "Research", bg: "linear-gradient(135deg,rgba(167,139,250,0.5),rgba(125,211,252,0.4))" },
@@ -165,6 +327,7 @@ export const dockItems = [
 
 export const desktopIcons = [
   { id: "about", icon: "👤", label: "About Me", bg: "linear-gradient(135deg,rgba(125,211,252,0.45),rgba(167,139,250,0.4))" },
+  { id: "design", icon: "🎨", label: "Design", bg: "linear-gradient(135deg,rgba(255,64,129,0.45),rgba(252,211,77,0.4))" },
   { id: "skills", icon: "⚡", label: "Skills", bg: "linear-gradient(135deg,rgba(167,139,250,0.45),rgba(244,114,182,0.4))" },
   { id: "certs", icon: "🏆", label: "Certs", bg: "linear-gradient(135deg,rgba(252,211,77,0.45),rgba(251,146,60,0.4))" },
   { id: "contact", icon: "✉", label: "Hire Me", bg: "linear-gradient(135deg,rgba(110,231,183,0.45),rgba(125,211,252,0.4))" },
@@ -175,10 +338,12 @@ export const defaultPositions: Record<string, { x: number; y: number; w: number;
   about: { x: 60, y: 30, w: 380, h: 460 },
   skills: { x: 100, y: 50, w: 360, h: 420 },
   projects: { x: 140, y: 20, w: 420, h: 460 },
+  design: { x: 60, y: 20, w: 520, h: 520 },
   tools: { x: 180, y: 40, w: 380, h: 360 },
   certs: { x: 220, y: 60, w: 400, h: 420 },
   research: { x: 260, y: 30, w: 420, h: 380 },
   contact: { x: 300, y: 50, w: 360, h: 460 },
+  resume: { x: 80, y: 20, w: 560, h: 520 },
 };
 
 export const windowTitles: Record<string, string> = {
@@ -186,8 +351,10 @@ export const windowTitles: Record<string, string> = {
   about: "👤 about — fatima_rehman.profile",
   skills: "⚡ skills — technical_arsenal",
   projects: "🗂 projects — github.com/fatimaatta-09",
-  tools: "🛡 security_tools — /usr/bin/",
+  design: "🎨 design — portfolio.creative",
+  tools: "🛡 tools — /usr/bin/",
   certs: "🏆 certifications — /certs/",
   research: "🧠 research — neuro_ai_lab",
   contact: "✉ contact — send_message.sh",
+  resume: "📄 resume — fatima_rehman.pdf",
 };

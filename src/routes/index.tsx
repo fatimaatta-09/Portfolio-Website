@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   profile, projects, tools, certs, skillTree,
-  dockItems, desktopIcons, defaultPositions, windowTitles,
+  dockItems, desktopIcons, defaultPositions, windowTitles, designProjects,
 } from "@/lib/portfolio-data";
 // contact form posts directly to Web3Forms; no backend client needed
 import dragonAsset from "@/assets/kali-dragon.png";
@@ -44,20 +44,22 @@ const WEB3FORMS_ACCESS_KEY = "b5e09d6c-d151-460d-b38f-0007a4872635";
 
 const ICONS: Record<string, LucideIcon> = {
   terminal: TerminalSquare, about: Fingerprint, skills: Cpu, projects: Network,
-  tools: ScanSearch, research: IconBrain, certs: Award, contact: IconMail, resume: Database,
+  design: Sparkles, tools: ScanSearch, research: IconBrain, certs: Award,
+  contact: IconMail, resume: IconFile,
 };
 
 // MD Accent palette — built for dark backgrounds, high contrast, matte
 const ICON_COLORS: Record<string, string> = {
-  terminal: "#00E5FF",   // light-blue A400 — electric cyan-blue
-  about:    "#69F0AE",   // green A200      — vivid mint green
-  skills:   "#FFAB40",   // orange A200     — warm punchy orange
-  projects: "#448AFF",   // blue A200       — sharp vivid blue
-  tools:    "#FF5252",   // red A200        — assertive red
-  research: "#E040FB",   // purple A200     — vivid electric purple
-  certs:    "#FFD740",   // amber A200      — vivid gold
-  contact:  "#1DE9B6",   // teal A400       — vivid teal
-  resume:   "#FF6D00",   // deep-orange A700 — rich vivid orange
+  terminal: "#00E5FF",
+  about:    "#69F0AE",
+  skills:   "#FFAB40",
+  projects: "#448AFF",
+  design:   "#FF4081",
+  tools:    "#FF5252",
+  research: "#E040FB",
+  certs:    "#FFD740",
+  contact:  "#1DE9B6",
+  resume:   "#FF6D00",
 };
 
 type ResumeState = "checking" | "ok" | "fail";
@@ -207,10 +209,10 @@ function CursorTrail() {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "FR-OS — Fatima Rehman | Cybersecurity Portfolio" },
-      { name: "description", content: "Interactive Kali Linux-inspired OS portfolio of Fatima Rehman: cybersecurity, AI/ML research, and robotics." },
+      { title: "FR-OS — Fatima Rehman | Graphic Designer & Cybersecurity Portfolio" },
+      { name: "description", content: "Interactive OS portfolio of Fatima Rehman: graphic design, brand identity, UI/UX, cybersecurity, AI/ML research, and robotics." },
       { property: "og:title", content: "FR-OS — Fatima Rehman" },
-      { property: "og:description", content: "Interactive desktop portfolio: cybersecurity, AI research, and robotics." },
+      { property: "og:description", content: "Interactive desktop portfolio: graphic design, cybersecurity, AI research, and robotics." },
     ],
   }),
   component: FROS,
@@ -297,10 +299,15 @@ function FROS() {
     }
     const color = ICON_COLORS[name];
     if (name === "resume") {
-      window.open(RESUME_URL, "_blank", "noopener,noreferrer");
-      setPopping("resume");
+      // open inline viewer window instead of new tab
       triggerMatrix(origin, color);
+      setPopping("resume");
       setTimeout(() => setPopping(p => (p === "resume" ? null : p)), 320);
+      setZTop(z => {
+        const nz = z + 1;
+        setWins(w => w[name] ? { ...w, [name]: { ...w[name], open: true, z: nz } } : w);
+        return nz;
+      });
       return;
     }
     triggerMatrix(origin, color);
@@ -622,10 +629,12 @@ function WindowBody({ name, actions }: { name: string; actions: WinActions }) {
     case "about": return <About />;
     case "skills": return <Skills />;
     case "projects": return <Projects />;
+    case "design": return <DesignPortfolio />;
     case "tools": return <Tools />;
     case "certs": return <Certs />;
     case "research": return <Research />;
     case "contact": return <Contact actions={actions} />;
+    case "resume": return <ResumeViewer />;
   }
   return null;
 }
@@ -635,7 +644,7 @@ const TERM_COMMANDS = [
   "help","whoami","about","skills","projects","certs","tools","contact",
   "github","linkedin","email","resume","open","ls","pwd","cd","tree","find",
   "date","neofetch","cat","echo","vibe","sudo","exit","clear","hire","research",
-  "history","banner","inbox",
+  "history","banner","inbox","design","canva","figma",
 ] as const;
 
 const RESUME_URL = "/resume.pdf";
@@ -958,6 +967,25 @@ function Terminal({ actions }: { actions: WinActions }) {
       case "exit":
         out.push({ kind: "out", text: "logout — session closed. Refresh to reconnect.", cls: "term-warn" });
         break;
+      case "design":
+        out.push({ kind: "out", text: "[System] Loading creative workspace...", cls: "term-success" });
+        out.push({ kind: "out", text: "[OK] Brand Identity · UI/UX · Motion Graphics ▓▓▓▓▓ 100%", cls: "term-highlight" });
+        out.push({ kind: "out", text: "🎨 Canva · Figma · Adobe Suite · Procreate" });
+        setTimeout(() => actions.openWin("design"), 350);
+        break;
+      case "canva":
+        out.push({ kind: "out", text: "[Canva] Initializing design environment...", cls: "term-success" });
+        out.push({ kind: "out", text: "[OK] Templates loaded ▓▓▓▓▓ 100%", cls: "term-highlight" });
+        out.push({ kind: "out", text: "[OK] Opening design portfolio — canva.com selected as primary tool" });
+        out.push({ kind: "link", text: "https://canva.com", href: "https://canva.com", label: "→ https://canva.com" });
+        setTimeout(() => actions.openWin("design"), 400);
+        break;
+      case "figma":
+        out.push({ kind: "out", text: "[Figma] Connecting to design cloud...", cls: "term-success" });
+        out.push({ kind: "out", text: "[OK] UI/UX prototypes ready ▓▓▓▓▓ 100%", cls: "term-highlight" });
+        out.push({ kind: "link", text: "https://figma.com", href: "https://figma.com", label: "→ https://figma.com" });
+        setTimeout(() => actions.openWin("design"), 400);
+        break;
       default:
         out.push({ kind: "out", text: "bash: " + c + ": command not found", cls: "term-warn" });
         out.push({ kind: "out", text: "try 'help' to list available commands" });
@@ -1063,8 +1091,68 @@ function Terminal({ actions }: { actions: WinActions }) {
     </div>
   );
 }
+/* ============ RESUME VIEWER ============ */
+function ResumeViewer() {
+  const [errored, setErrored] = useState(false);
+  return (
+    <div className="resume-viewer" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <div className="resume-toolbar" style={{ padding: '10px 14px', borderBottom: '1px solid rgba(255,255,255,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <span className="resume-toolbar-label" style={{ fontSize: 13, fontWeight: 600 }}>📄 fatima_rehman_resume.pdf</span>
+        <div style={{ display: 'flex', gap: 10 }}>
+          <a
+            className="resume-dl-btn"
+            href={RESUME_URL}
+            download="Fatima_Rehman_Resume.pdf"
+            title="Download PDF"
+            style={{ padding: '6px 12px', background: 'rgba(255,255,255,0.1)', borderRadius: 4, fontSize: 11, color: '#fff', textDecoration: 'none' }}
+          >⬇ Download</a>
+          <a
+            className="resume-dl-btn resume-open-btn"
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Open in new tab"
+            style={{ padding: '6px 12px', background: '#FF6D00', borderRadius: 4, fontSize: 11, color: '#000', fontWeight: 600, textDecoration: 'none' }}
+          >↗ Open Fullscreen</a>
+        </div>
+      </div>
 
-
+      {!errored ? (
+        <div className="resume-iframe-wrap" style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+          <object
+            data={`${RESUME_URL}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+            type="application/pdf"
+            width="100%"
+            height="100%"
+            style={{ border: 'none', width: '100%', height: '100%', display: 'block' }}
+            onError={() => setErrored(true)}
+          >
+            <div style={{ padding: 40, textAlign: 'center' }}>
+              <p>Your browser doesn't support embedded PDFs.</p>
+              <p><a href={RESUME_URL} target="_blank" rel="noopener noreferrer" style={{ color: '#FF6D00' }}>Click here to view it directly.</a></p>
+            </div>
+          </object>
+        </div>
+      ) : (
+        <div className="resume-error" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1, padding: 40, textAlign: 'center' }}>
+          <div style={{ fontSize: 32, marginBottom: 10 }}>📭</div>
+          <div style={{ fontWeight: 700, color: "#FF6D00", marginBottom: 6 }}>Resume not displaying correctly?</div>
+          <div style={{ fontSize: 11, color: "var(--text3)", lineHeight: 1.7, marginBottom: 20 }}>
+            Make sure your <code>resume.pdf</code> is in the <code>public/</code> folder. <br/>
+            Sometimes browsers block PDFs in iframes.
+          </div>
+          <a
+            className="resume-dl-btn"
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ padding: '8px 16px', background: '#FF6D00', color: '#000', borderRadius: 4, textDecoration: 'none', fontWeight: 'bold' }}
+          >🔗 Open PDF Directly</a>
+        </div>
+      )}
+    </div>
+  );
+}
 
 /* ============ ABOUT ============ */
 function About() {
@@ -1245,6 +1333,218 @@ function Projects() {
   );
 }
 
+/* ============ DESIGN PORTFOLIO ============ */
+type DesignTab = "all" | "branding" | "uiux" | "motion" | "social" | "daily";
+
+function DesignCardSlideshow({ images, color }: { images: string[]; color: string }) {
+  const [idx, setIdx] = useState(0);
+  if (!images || images.length <= 1) return null;
+  const prev = () => setIdx(i => (i - 1 + images.length) % images.length);
+  const next = () => setIdx(i => (i + 1) % images.length);
+  return (
+    <div className="dslide-nav">
+      <button type="button" className="dslide-btn" onClick={prev} aria-label="Previous">‹</button>
+      <div className="dslide-dots">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            className={"dslide-dot" + (i === idx ? " active" : "")}
+            style={i === idx ? { background: color } : {}}
+            onClick={() => setIdx(i)}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
+      </div>
+      <button type="button" className="dslide-btn" onClick={next} aria-label="Next">›</button>
+    </div>
+  );
+}
+
+function Design3DAnimatic() {
+  return (
+    <div className="d3d-container">
+      <div className="d3d-cube">
+        <div className="d3d-face d3d-front">🎨</div>
+        <div className="d3d-face d3d-back">✨</div>
+        <div className="d3d-face d3d-right">💻</div>
+        <div className="d3d-face d3d-left">🚀</div>
+        <div className="d3d-face d3d-top"></div>
+        <div className="d3d-face d3d-bottom"></div>
+      </div>
+    </div>
+  );
+}
+
+function DesignPortfolio() {
+  const [activeTab, setActiveTab] = useState<DesignTab>("all");
+  const [lightbox, setLightbox] = useState<string | null>(null);
+  const [slideIdxMap, setSlideIdxMap] = useState<Record<string, number>>({});
+
+  const getSlideIdx = (id: string) => slideIdxMap[id] ?? 0;
+  const setSlideIdx = (id: string, fn: (prev: number) => number, len: number) =>
+    setSlideIdxMap(m => ({ ...m, [id]: ((fn(m[id] ?? 0)) + len) % len }));
+
+  const tabs: { id: DesignTab; label: string; emoji: string }[] = [
+    { id: "all",      label: "All Work",     emoji: "✦" },
+    { id: "daily",    label: "Daily Designs", emoji: "🗒" },
+    { id: "social",   label: "Social Media",  emoji: "📸" },
+    { id: "branding", label: "Branding",      emoji: "🎨" },
+    { id: "uiux",     label: "UI / UX",       emoji: "📱" },
+    { id: "motion",   label: "Motion",        emoji: "🎬" },
+  ];
+
+  const filtered = activeTab === "all"
+    ? designProjects
+    : designProjects.filter(p => p.category === activeTab);
+
+  return (
+    <div className="design-portfolio">
+      {/* Header */}
+      <div className="design-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          <div className="design-header-title">
+            <span className="design-sparkle">✦</span>
+            <span>Creative Portfolio</span>
+          </div>
+          <div className="design-header-sub">Brand Identity · Social Media · UI/UX · Motion Graphics</div>
+          <div className="design-tools-strip">
+            {["Canva","Figma","Adobe XD","Procreate","Typography","Spline 3D"].map(t => (
+              <span key={t} className="design-tool-badge">{t}</span>
+            ))}
+          </div>
+        </div>
+        
+        {/* 3D Animatic */}
+        <Design3DAnimatic />
+      </div>
+
+      {/* Tabs */}
+      <div className="design-tabs">
+        {tabs.map(t => (
+          <button
+            key={t.id}
+            type="button"
+            className={"design-tab" + (activeTab === t.id ? " active" : "")}
+            onClick={() => setActiveTab(t.id)}
+          >
+            <span>{t.emoji}</span>
+            <span>{t.label}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Project Cards */}
+      <div className="design-cards">
+        {filtered.map(p => {
+          const gallery = p.images && p.images.length > 1 ? p.images : null;
+          const si = getSlideIdx(p.id);
+          const currentImg = gallery ? gallery[si] : p.image;
+          return (
+            <div key={p.id} className="design-card" style={{ ["--dcard-color" as any]: p.color }}>
+              {/* Badge */}
+              {p.badge && (
+                <div className="design-card-badge" style={{ borderColor: p.color, color: p.color }}>
+                  {p.badge}
+                </div>
+              )}
+
+              {/* Image preview with gallery */}
+              <div className="design-card-img-wrap" style={{ position: "relative" }}>
+                <img
+                  src={currentImg}
+                  alt={p.title}
+                  className="design-card-img"
+                  loading="lazy"
+                  onClick={() => setLightbox(currentImg)}
+                  style={{ cursor: "zoom-in" }}
+                />
+                <div className="design-card-img-overlay" onClick={() => setLightbox(currentImg)}>
+                  <span className="design-expand-icon">⤢ Expand</span>
+                </div>
+
+                {/* Gallery arrows — only if multiple images */}
+                {gallery && (
+                  <>
+                    <button
+                      type="button"
+                      className="dslide-arrow dslide-arrow-left"
+                      onClick={e => { e.stopPropagation(); setSlideIdx(p.id, i => i - 1, gallery.length); }}
+                      aria-label="Previous image"
+                    >‹</button>
+                    <button
+                      type="button"
+                      className="dslide-arrow dslide-arrow-right"
+                      onClick={e => { e.stopPropagation(); setSlideIdx(p.id, i => i + 1, gallery.length); }}
+                      aria-label="Next image"
+                    >›</button>
+                    <div className="dslide-counter">{si + 1} / {gallery.length}</div>
+                  </>
+                )}
+              </div>
+
+              {/* Dot nav */}
+              {gallery && (
+                <div className="dslide-dots-row">
+                  {gallery.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      className={"dslide-dot" + (i === si ? " active" : "")}
+                      style={i === si ? { background: p.color } : {}}
+                      onClick={() => setSlideIdxMap(m => ({ ...m, [p.id]: i }))}
+                      aria-label={`Image ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {/* Card body */}
+              <div className="design-card-body">
+                <div className="design-card-title" style={{ color: p.color }}>{p.title}</div>
+                <div className="design-card-desc">{p.desc}</div>
+                <ul className="design-highlights">
+                  {p.highlights.map((h, i) => (
+                    <li key={i}>
+                      <span className="design-bullet" style={{ color: p.color }}>▸</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="design-card-tools">
+                  {p.tools.map(t => (
+                    <span key={t} className="design-card-tool-badge">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Design Philosophy */}
+      <div className="design-philosophy">
+        <div className="design-philosophy-mark">"</div>
+        <div className="design-philosophy-text">
+          Good design is where precision meets imagination — I bring both. Whether it's
+          a local restaurant's Instagram or a full brand identity, I design content that
+          feels real, scroll-stopping, and built for the audience.
+        </div>
+        <div className="design-philosophy-author">— Fatima Rehman</div>
+      </div>
+
+      {/* Lightbox */}
+      {lightbox && (
+        <div className="design-lightbox" onClick={() => setLightbox(null)}>
+          <div className="design-lightbox-inner" onClick={e => e.stopPropagation()}>
+            <button type="button" className="design-lightbox-close" onClick={() => setLightbox(null)}>✕</button>
+            <img src={lightbox} alt="Design preview" className="design-lightbox-img" />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 /* ============ TOOLS ============ */
 function Tools() {
