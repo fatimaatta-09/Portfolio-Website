@@ -647,7 +647,7 @@ const TERM_COMMANDS = [
   "history","banner","inbox","design","canva","figma",
 ] as const;
 
-const RESUME_URL = "/resume.pdf";
+const RESUME_URL = "/fatima_resume_v4.pdf";
 
 /* ── Virtual Filesystem ───────────────────────────────────────────── */
 type VFile = { type: "file"; content: string | (() => string) };
