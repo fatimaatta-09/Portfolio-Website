@@ -1409,7 +1409,7 @@ function DesignPortfolio() {
           </div>
           <div className="design-header-sub">Brand Identity · Social Media · UI/UX · Motion Graphics</div>
           <div className="design-tools-strip">
-            {["Canva","Figma","Adobe XD","Procreate","Typography","Spline 3D"].map(t => (
+            {["Canva", "Figma", "Brand Identity", "UI/UX", "Typography", "Visual Storytelling"].map(t => (
               <span key={t} className="design-tool-badge">{t}</span>
             ))}
           </div>
