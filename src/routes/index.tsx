@@ -1334,7 +1334,7 @@ function Projects() {
 }
 
 /* ============ DESIGN PORTFOLIO ============ */
-type DesignTab = "all" | "branding" | "uiux" | "motion" | "social" | "daily";
+type DesignTab = "all" | "event" | "society" | "social";
 
 function DesignCardSlideshow({ images, color }: { images: string[]; color: string }) {
   const [idx, setIdx] = useState(0);
@@ -1386,12 +1386,9 @@ function DesignPortfolio() {
     setSlideIdxMap(m => ({ ...m, [id]: ((fn(m[id] ?? 0)) + len) % len }));
 
   const tabs: { id: DesignTab; label: string; emoji: string }[] = [
-    { id: "all",      label: "All Work",     emoji: "✦" },
-    { id: "daily",    label: "Daily Designs", emoji: "🗒" },
-    { id: "social",   label: "Social Media",  emoji: "📸" },
-    { id: "branding", label: "Branding",      emoji: "🎨" },
-    { id: "uiux",     label: "UI / UX",       emoji: "📱" },
-    { id: "motion",   label: "Motion",        emoji: "🎬" },
+    { id: "all",      label: "All Work",       emoji: "✦" },
+    { id: "event",    label: "Event Designs",  emoji: "🎉" },
+    { id: "society",  label: "Society Work",   emoji: "🤖" },
   ];
 
   const filtered = activeTab === "all"
@@ -1407,9 +1404,9 @@ function DesignPortfolio() {
             <span className="design-sparkle">✦</span>
             <span>Creative Portfolio</span>
           </div>
-          <div className="design-header-sub">Brand Identity · Social Media · UI/UX · Motion Graphics</div>
+          <div className="design-header-sub">Event Posters · Society Graphics · Social Media</div>
           <div className="design-tools-strip">
-            {["Canva", "Figma", "Brand Identity", "UI/UX", "Typography", "Visual Storytelling"].map(t => (
+            {["Canva", "Figma", "Poster Design", "Typography", "Visual Storytelling"].map(t => (
               <span key={t} className="design-tool-badge">{t}</span>
             ))}
           </div>
@@ -1526,9 +1523,10 @@ function DesignPortfolio() {
       <div className="design-philosophy">
         <div className="design-philosophy-mark">"</div>
         <div className="design-philosophy-text">
-          Good design is where precision meets imagination — I bring both. Whether it's
-          a local restaurant's Instagram or a full brand identity, I design content that
-          feels real, scroll-stopping, and built for the audience.
+          I don't use templates — every design starts from scratch. Whether it's a society
+          farewell invitation or a robotics welcome poster, I obsess over the details:
+          textures, type hierarchy, color mood, and making sure it actually feels like
+          something worth sharing.
         </div>
         <div className="design-philosophy-author">— Fatima Rehman</div>
       </div>
