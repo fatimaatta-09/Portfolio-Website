@@ -30,3 +30,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Lock file omitted — local npm@11 and Cloudflare npm@10 generate incompatible lockfiles.
+# Cloudflare will run `npm install` automatically when no lock file is present.
+package-lock.json
