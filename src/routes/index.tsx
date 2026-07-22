@@ -644,7 +644,7 @@ const TERM_COMMANDS = [
   "help","whoami","about","skills","projects","certs","tools","contact",
   "github","linkedin","email","resume","open","ls","pwd","cd","tree","find",
   "date","neofetch","cat","echo","vibe","sudo","exit","clear","hire","research",
-  "history","banner","inbox","design","canva","figma",
+  "history","banner","inbox","design","canva","figma","whatsplan",
 ] as const;
 
 const RESUME_URL = "/fatima_resume_v5.pdf";
@@ -845,6 +845,14 @@ function Terminal({ actions }: { actions: WinActions }) {
         out.push({ kind: "out", text: "  ██╔══╝  ██╔══██╗     ██║   ██║╚════██║", cls: "term-highlight" });
         out.push({ kind: "out", text: "  ██║     ██║  ██║     ╚██████╔╝███████║", cls: "term-highlight" });
         out.push({ kind: "out", text: "  ╚═╝     ╚═╝  ╚═╝      ╚═════╝ ╚══════╝", cls: "term-highlight" });
+        break;
+      case "whatsplan":
+        out.push({ kind: "out", text: "💬 WhatsPlan — AI-Powered WhatsApp Management & Chrome Extension (v3)", cls: "term-highlight" });
+        out.push({ kind: "out", text: "🏆 4th Place Winner — Kracked Devs (KD) Vibe-A-Thon (June 2026)", cls: "term-success" });
+        out.push({ kind: "out", text: "Repo: https://github.com/alikamran21/WhatsPlan.git", cls: "term-link" });
+        out.push({ kind: "out", text: "Demo: https://youtu.be/W72gATWWjUI?si=X4GM3LydOBhwPnFt", cls: "term-link" });
+        out.push({ kind: "out", text: "→ opening projects window…", cls: "term-success" });
+        setTimeout(() => actions.openWin("projects"), 250);
         break;
       case "about":
       case "research":
