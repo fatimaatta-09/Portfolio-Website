@@ -699,33 +699,223 @@ body { min-height: 100vh; height: 100vh; }
 /* About text contrast */
 .about-body p, .about-body span, .stat-lbl, .cert-org, .proj-desc, .term-out{color:var(--text2);}
 
-/* MOBILE RESPONSIVE */
-@media (max-width: 640px) {
-  .topbar{padding:0 10px;height:42px;}
-  .topbar-apps{display:none;}
-  .kali-logo{font-size:12px;letter-spacing:2px;}
-  #clock{font-size:11px;}
-  .topbar-indicator span{display:none;}
-  .desktop{top:58px;bottom:92px;}
-  .icon-grid{display:none;}
-  .dock{
-    left:8px;right:8px;transform:none;max-width:none;
-    height:72px;padding:0 10px;justify-content:flex-start;
-    overflow-x:auto;-webkit-overflow-scrolling:touch;
-  }
-  .dock-item{min-width:56px;}
-  .dock-icon{width:46px;height:46px;font-size:22px;}
-  .dock-label{font-size:9px;}
-  .win{
-    border-radius:0!important;
-    min-width:0!important;min-height:0!important;
-  }
-  .win-bar{cursor:default!important;}
-  .tools-grid{grid-template-columns:repeat(3,1fr)!important;}
-  .about-stats{grid-template-columns:repeat(3,1fr);}
+/* ============================================================
+   MOBILE RESPONSIVE — COMPREHENSIVE
+   ============================================================ */
+
+/* ── Tablet / small desktop (641px – 900px) ── */
+@media (max-width: 900px) {
+  .topbar-apps { gap: 2px; }
+  .topbar-app  { padding: 5px 8px; font-size: 10px; }
+  .dock        { gap: 4px; padding: 0 8px; }
+  .dock-item   { min-width: 44px; }
+  .dock-icon   { width: 36px; height: 36px; font-size: 18px; }
+  .dock-label  { font-size: 8px; }
 }
-@media (max-width: 380px) {
-  .tools-grid{grid-template-columns:repeat(2,1fr)!important;}
+
+/* ── Phone (≤ 640px) ── */
+@media (max-width: 640px) {
+
+  /* ─── Topbar ─── */
+  .topbar {
+    padding: 0 10px;
+    height: 44px;
+    border-radius: 0 0 12px 12px;
+    top: 0; left: 0; right: 0;
+  }
+  .topbar-apps { gap: 2px; }
+  /* Hide verbose nav items — keep only Resume + Hire me CTAs */
+  .topbar-app:not(.topbar-cta):not(.topbar-cta-hire) { display: none; }
+  .topbar-app.topbar-cta,
+  .topbar-app.topbar-cta-hire {
+    padding: 5px 8px;
+    font-size: 10px;
+    gap: 3px;
+  }
+  .topbar-app.topbar-cta span,
+  .topbar-app.topbar-cta-hire span { display: inline; }
+  .kali-logo  { font-size: 12px; letter-spacing: 2px; }
+  #clock      { font-size: 10px; letter-spacing: 0.5px; }
+  /* Hide verbose status labels, keep dots */
+  .topbar-indicator span { display: none; }
+  .topbar-right { gap: 8px; }
+  /* Hide resume chip in topbar on tiny screens */
+  .topbar-right .resume-chip { display: none; }
+
+  /* ─── Desktop area ─── */
+  .desktop { top: 52px; bottom: 80px; overflow: hidden; }
+
+  /* Hide desktop icons — dock is the nav on mobile */
+  .icon-grid { display: none; }
+
+  /* ─── Dock ─── */
+  .dock {
+    left: 0; right: 0;
+    bottom: 0;
+    transform: none;
+    max-width: 100%;
+    height: 76px;
+    padding: 4px 8px 6px;
+    border-radius: 16px 16px 0 0;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    gap: 4px;
+    /* prevent pop animation clipping */
+    overflow: visible;
+    overflow-x: auto;
+  }
+  .dock-item {
+    min-width: 52px;
+    padding: 2px 4px;
+  }
+  .dock-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    border-radius: 12px;
+  }
+  .dock-label { font-size: 8px; margin-top: 2px; }
+  .dock-sep   { height: 22px; }
+
+  /* ─── Windows — always fullscreen on mobile ─── */
+  .win {
+    border-radius: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .win-bar   { cursor: default !important; height: 40px; padding: 0 10px; }
+  .win-title { font-size: 10px; }
+  .win-btn   { width: 13px; height: 13px; }
+  .win-body  {
+    /* account for dock height */
+    padding-bottom: 4px;
+  }
+
+  /* ─── Terminal ─── */
+  .term-body  { padding: 8px; font-size: 10px; line-height: 1.65; }
+  .term-grid  { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px 12px; }
+  .term-input { font-size: 10px; }
+
+  /* ─── About ─── */
+  .about-body   { padding: 14px; }
+  .about-avatar { width: 56px; height: 56px; font-size: 18px; }
+  .about-name   { font-size: 14px; }
+  .about-stats  { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .stat-val     { font-size: 14px; }
+  .stat-lbl     { font-size: 7px; }
+  .about-bio    { font-size: 11px; }
+
+  /* ─── Skills ─── */
+  .skills-v2    { padding: 8px; gap: 10px; }
+  .skill-grid   { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 5px; }
+  .skill-chip   { padding: 7px 8px; gap: 6px; }
+  .skill-chip-label { font-size: 10px; }
+
+  /* ─── Projects ─── */
+  .blueprint-card { padding: 12px; margin-bottom: 8px; }
+  .proj-title     { font-size: 12px; }
+  .proj-desc      { font-size: 10px; }
+  .proj-title-row { flex-wrap: wrap; gap: 5px; }
+
+  /* ─── Tools ─── */
+  .tools-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 6px; padding: 8px; }
+  .tool-icon  { font-size: 18px; }
+  .tool-name  { font-size: 9px; }
+
+  /* ─── Design Portfolio ─── */
+  .design-header      { padding: 10px 12px 8px; }
+  .design-header-title { font-size: 12px; }
+  .design-header-sub  { font-size: 8px; }
+  .design-cards       { padding: 8px; gap: 8px; }
+  .design-card-img-wrap { height: 140px; }
+  .design-card-body   { padding: 10px; }
+  .design-card-title  { font-size: 11px; }
+  .design-card-desc   { font-size: 9.5px; line-height: 1.6; }
+  .design-highlights li { font-size: 9px; }
+  .design-philosophy  { margin: 4px 8px 10px; padding: 10px 12px; }
+  .design-philosophy-text { font-size: 9.5px; }
+  /* Stack 3D animatic nicely */
+  .d3d-container { width: 32px; height: 32px; }
+  .d3d-face      { width: 32px; height: 32px; font-size: 16px; }
+  .d3d-front,  .d3d-back  { transform: translateZ(16px); }
+  .d3d-right,  .d3d-left  { transform: rotateY(90deg) translateZ(16px); }
+  .d3d-top,    .d3d-bottom{ transform: rotateX(90deg) translateZ(16px); }
+  .d3d-back   { transform: rotateY(180deg) translateZ(16px); }
+  .d3d-left   { transform: rotateY(-90deg) translateZ(16px); }
+  .d3d-bottom { transform: rotateX(-90deg) translateZ(16px); }
+
+  /* Design tabs scroll on mobile */
+  .design-tabs { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+  .design-tab  { padding: 7px 10px; font-size: 8px; white-space: nowrap; }
+
+  /* ─── Certs ─── */
+  .cert-item  { padding: 7px 10px; gap: 8px; }
+  .cert-name  { font-size: 11px; }
+  .cert-org   { font-size: 9px; }
+
+  /* ─── Research ─── */
+  .research-card  { margin: 8px; padding: 12px; }
+  .research-title { font-size: 12px; }
+  .accuracy-big   { font-size: 26px; }
+
+  /* ─── Contact ─── */
+  .contact-body   { padding: 12px; }
+  .contact-meta   { flex-direction: column; gap: 5px; }
+  .contact-chip   { font-size: 10px; padding: 5px 9px; }
+  .contact-label  { font-size: 9px; }
+  .contact-input  { font-size: 11px; padding: 8px; }
+  .contact-textarea { height: 70px; }
+  .contact-btn    { font-size: 10px; padding: 10px; min-height: 44px; }
+
+  /* ─── Command palette ─── */
+  .palette        { width: 96vw !important; }
+  .palette-item   { font-size: 11px; padding: 9px 10px; }
+  .palette-list   { max-height: 55vh; }
+
+  /* ─── Resume chip — keep visible in About window ─── */
+  .about-body .resume-chip { display: inline-flex; }
+
+  /* ─── Lightbox ─── */
+  .design-lightbox-inner {
+    max-width: 98vw;
+    max-height: 80vh;
+  }
+
+  /* ─── Minimum touch targets: all interactive elements ─── */
+  .win-btn::after {
+    width: 36px;
+    height: 36px;
+  }
+  button,
+  .dock-item,
+  .desk-icon,
+  .topbar-app,
+  .skill-chip,
+  .design-tab,
+  .cert-item,
+  .proj-card {
+    min-height: 44px;
+  }
+  .dock-item { min-height: unset; } /* dock uses its own sizing */
+  .design-tab { min-height: unset; }
+}
+
+/* ── Very small phones (≤ 400px) ── */
+@media (max-width: 400px) {
+  .tools-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .about-stats { grid-template-columns: repeat(2, 1fr); }
+  .dock-icon  { width: 38px; height: 38px; font-size: 18px; }
+  .dock-item  { min-width: 44px; }
+  .dock-label { display: none; }
+  .skill-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+  .topbar-app.topbar-cta span,
+  .topbar-app.topbar-cta-hire span { display: none; }
 }
 
 /* ============ SANS-SERIF BIO (Inter) ============ */
