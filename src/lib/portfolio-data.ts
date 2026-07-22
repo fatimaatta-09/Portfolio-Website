@@ -16,8 +16,8 @@ export const profile = {
     { label: "Linux", cls: "tag-orange" },
   ],
   stats: [
-    { val: "6+", lbl: "PROJECTS" },
-    { val: "2×", lbl: "NAT. CHAMPION" },
+    { val: "7+", lbl: "PROJECTS" },
+    { val: "3×", lbl: "CHAMPION / WINNER" },
     { val: "2+", lbl: "DESIGNS" },
   ],
   contact: {
