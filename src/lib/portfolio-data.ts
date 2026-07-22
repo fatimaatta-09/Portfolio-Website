@@ -59,6 +59,21 @@ export type Project = {
   demo?: string;
 };
 export const projects: Project[] = [
+  {
+    title: "💬 WhatsPlan — AI-Powered WhatsApp Management & Browser Extension",
+    desc: "Modern full-stack application and custom browser extension (Manifest v3) designed to streamline and automate WhatsApp communications with an intelligent AI classification engine.",
+    bullets: [
+      "Intelligent AI Classification: Node.js backend integrating classifier.js to automatically process, categorize, and sort incoming WhatsApp messaging data.",
+      "Browser Extension Integration: Sleek, popup-based Chrome extension (Manifest v3) built with React, TypeScript, and Vite for direct access inside the browser.",
+      "Automated Backend Workflows: Background services for session retention, email triggers, and WhatsApp web automation — fully Dockerized (Dockerfile + docker-compose) for multi-stage deployment.",
+    ],
+    stack: ["React", "TypeScript", "Vite", "Node.js", "Chrome Ext v3", "AI Classifier", "Docker", "WhatsApp Web API"],
+    blueprint: ["CHROME EXT", "AI ENGINE", "NODE SERVER", "WA AUTOMATION"],
+    tags: [["AI/ML","tag-green"],["Full-Stack","tag-cyan"],["Chrome Ext","tag-purple"]],
+    award: "🏆 4th Place Winner — Kracked Devs (KD) Vibe-A-Thon (KD Team Vote)",
+    repo: "https://github.com/alikamran21/WhatsPlan.git",
+    demo: "https://youtu.be/W72gATWWjUI?si=X4GM3LydOBhwPnFt",
+  },
   { title: "⏱ Temporal Instruction Micro-Engine", desc: "Compact instruction scheduler exploring time-sliced micro-ops — a research-grade engine focused on deterministic ordering.", blueprint: ["PARSE OPS", "TIME SLICE", "DISPATCH", "TRACE LOG"], tags: [["C++","tag-cyan"],["Systems","tag-orange"],["Research","tag-purple"]], repo: "https://github.com/fatimaatta-09/Temporal-Instruction-Micro-Engine-" },
   { title: "💚 SerenityCare", desc: "Collaborative full-stack care platform — appointment flows, patient records, and a calming, accessible interface.", blueprint: ["CLIENT UI", "REST API", "AUTH", "DATABASE"], tags: [["Full-Stack","tag-green"],["UI/UX","tag-purple"],["Healthcare","tag-cyan"]], repo: "https://github.com/alikamran21/Serenitycare" },
   {
