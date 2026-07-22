@@ -1310,13 +1310,21 @@ function Projects() {
                 </span>
                 <div className="proj-title"><DecryptText text={cleanTitle} /></div>
               </div>
-              {p.repo && (
-                <a href={p.repo} target="_blank" rel="noreferrer noopener" className="proj-repo-btn" title="View source on GitHub">
-                  <Github size={INLINE_ICON_SIZE} strokeWidth={TAB_ICON_STROKE} />
-                  <span>Code</span>
-                  <ExternalLink size={INLINE_ICON_SIZE - 2} strokeWidth={TAB_ICON_STROKE} />
-                </a>
-              )}
+              <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                {p.repo && (
+                  <a href={p.repo} target="_blank" rel="noreferrer noopener" className="proj-repo-btn" title="View source on GitHub">
+                    <Github size={INLINE_ICON_SIZE} strokeWidth={TAB_ICON_STROKE} />
+                    <span>Code</span>
+                    <ExternalLink size={INLINE_ICON_SIZE - 2} strokeWidth={TAB_ICON_STROKE} />
+                  </a>
+                )}
+                {p.demo && (
+                  <a href={p.demo} target="_blank" rel="noreferrer noopener" className="proj-repo-btn proj-demo-btn" title="Watch Demo Video">
+                    <ExternalLink size={INLINE_ICON_SIZE} strokeWidth={TAB_ICON_STROKE} />
+                    <span>Demo</span>
+                  </a>
+                )}
+              </div>
             </div>
             {p.award && (
               <div className="proj-badge"><Award size={INLINE_ICON_SIZE} strokeWidth={TAB_ICON_STROKE} /> {p.award}</div>
