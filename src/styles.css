@@ -750,34 +750,39 @@ body { min-height: 100vh; height: 100vh; }
 
   /* ─── Dock ─── */
   .dock {
-    left: 0; right: 0;
-    bottom: 0;
-    transform: none;
+    position: fixed;
+    left: 8px; right: 8px; bottom: 8px;
+    width: calc(100% - 16px);
     max-width: 100%;
-    height: 76px;
-    padding: 4px 8px 6px;
-    border-radius: 16px 16px 0 0;
+    height: 66px;
+    padding: 4px 10px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
     justify-content: flex-start;
-    overflow-x: auto;
-    overflow-y: hidden;
+    gap: 6px;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
-    gap: 4px;
-    /* prevent pop animation clipping */
-    overflow: visible;
-    overflow-x: auto;
+    box-sizing: border-box;
+    z-index: 9999;
+    scroll-snap-type: x mandatory;
+    transform: none;
   }
   .dock-item {
-    min-width: 52px;
+    flex-shrink: 0 !important;
+    min-width: 48px;
     padding: 2px 4px;
+    scroll-snap-align: start;
   }
   .dock-icon {
-    width: 44px;
-    height: 44px;
-    font-size: 20px;
-    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 10px;
   }
-  .dock-label { font-size: 8px; margin-top: 2px; }
-  .dock-sep   { height: 22px; }
+  .dock-label { font-size: 8px; margin-top: 2px; white-space: nowrap; }
+  .dock-sep   { flex-shrink: 0; height: 22px; margin: 0 2px; }
 
   /* ─── Windows — always fullscreen on mobile ─── */
   .win {
