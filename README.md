@@ -34,9 +34,22 @@
 
 > *Most portfolios are pages. This one is an **operating system**.*
 
-**FR-OS** is an interactive desktop environment built as a portfolio — complete with a boot sequence, live terminal, draggable windows, and a Kali Linux dragon wallpaper. Built by **Fatima Rehman**, cybersecurity undergrad at GIKI, 2× national robotics champion, and AI/ML researcher.
+**FR-OS** is an interactive desktop environment built as a portfolio — complete with a boot sequence, live terminal, draggable windows, and a Kali Linux dragon wallpaper. Built by **Fatima Rehman**, cybersecurity undergrad at GIKI, 3× national robotics champion & hackathon winner, and AI/ML researcher.
 
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png" width="100%"/>
+
+---
+
+## `$ ls ./featured_projects`
+
+```bash
+💬  WhatsPlan                       — AI-Powered WhatsApp Manager & Chrome Extension (Manifest v3)
+🏆  Kracked Devs Vibe-A-Thon        — 4th Place Winner (KD Team Vote, June 2026)
+⏱  Temporal Instruction Micro-Engine — Research-grade micro-op scheduler
+💚  SerenityCare                    — Full-stack healthcare platform
+🤖  Bibble                          — Autonomous intruder detection robot
+🧬  Behavioral Fingerprint IDS      — DSA-heavy custom C++ intrusion detection
+```
 
 ---
 
@@ -44,13 +57,13 @@
 
 ```bash
 🐉  Kali-inspired boot animation    — loads like a real OS
-💻  Interactive terminal             — type real commands
+💻  Interactive terminal             — type real commands & secrets (`whatsplan`, `help`)
 🪟  Draggable app windows           — actual desktop UX
-🔬  AI/ML research showcase         — EEG neuro research
+🔬  AI/ML research showcase         — EEG neuro research (97.71% accuracy)
 🛡️  Cybersecurity tools display     — hacker aesthetic
-🏆  Achievements & certifications   — 6 certs + 2 trophies
+🏆  Achievements & certifications   — 14+ certs + 3x trophies & awards
 📄  One-click resume download       — always up to date
-📬  Contact form                    — no backend, no problem
+📬  Contact form                    — direct integration, no backend hassle
 ```
 
 ---
@@ -86,6 +99,6 @@ npm install && npm run dev
 
 *Built with 🐉 claymorphism · Kali aesthetics · too much caffeine*
 
-**© 2025 Fatima Rehman**
+**© 2026 Fatima Rehman**
 
 </div>
