@@ -733,23 +733,28 @@ body {
     height: 44px;
     border-radius: 0 0 12px 12px;
     top: 0; left: 0; right: 0;
+    position: fixed;
+    z-index: 10000;
   }
-  .topbar-apps { gap: 2px; }
+  .topbar-left { gap: 8px; }
+  .topbar-apps { gap: 4px; }
   /* Hide verbose nav items — keep only Resume + Hire me CTAs */
   .topbar-app:not(.topbar-cta):not(.topbar-cta-hire) { display: none; }
   .topbar-app.topbar-cta,
   .topbar-app.topbar-cta-hire {
-    padding: 5px 8px;
+    padding: 4px 8px;
     font-size: 10px;
-    gap: 3px;
+    gap: 4px;
+    white-space: nowrap;
+    border-radius: 6px;
   }
   .topbar-app.topbar-cta span,
-  .topbar-app.topbar-cta-hire span { display: inline; }
-  .kali-logo  { font-size: 12px; letter-spacing: 2px; }
+  .topbar-app.topbar-cta-hire span { display: inline; font-size: 10px; }
+  .kali-logo  { font-size: 12px; letter-spacing: 1.5px; }
   #clock      { font-size: 10px; letter-spacing: 0.5px; }
   /* Hide verbose status labels, keep dots */
   .topbar-indicator span { display: none; }
-  .topbar-right { gap: 8px; }
+  .topbar-right { gap: 6px; }
   /* Hide resume chip in topbar on tiny screens */
   .topbar-right .resume-chip { display: none; }
 
