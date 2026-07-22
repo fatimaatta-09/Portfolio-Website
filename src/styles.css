@@ -2029,4 +2029,44 @@ body { min-height: 100vh; height: 100vh; }
 .d3d-bottom { transform: rotateX(-90deg) translateZ(20px); }
 
 
+/* ============================================================
+   UI POLISH — smooth scroll, focus ring, scrollbar, accessibility
+   ============================================================ */
+
+/* Smooth scrolling for all scrollable containers */
+html { scroll-behavior: smooth; }
+.win-body, .design-portfolio, .palette-list { scroll-behavior: smooth; }
+
+/* Keyboard focus ring — visible only when using keyboard (not mouse) */
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+/* Scrollbar polish — consistent and thin across all panels */
+* { scrollbar-width: thin; scrollbar-color: rgba(125,211,252,0.2) transparent; }
+*::-webkit-scrollbar       { width: 4px; height: 4px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: rgba(125,211,252,0.2); border-radius: 4px; }
+*::-webkit-scrollbar-thumb:hover { background: rgba(125,211,252,0.45); }
+
+/* Dock scroll-snap on mobile — prevents items from being half cut-off */
+@media (max-width: 640px) {
+  .dock      { scroll-snap-type: x mandatory; }
+  .dock-item { scroll-snap-align: start; }
+}
+
+/* Respect system reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+
 
