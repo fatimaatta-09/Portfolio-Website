@@ -814,8 +814,10 @@ body {
   .win-title { font-size: 10px; }
   .win-btn   { width: 13px; height: 13px; }
   .win-body  {
-    /* account for dock height */
-    padding-bottom: 4px;
+    /* account for dock height so content is not obscured */
+    padding-bottom: 80px !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* ─── Terminal ─── */
