@@ -153,6 +153,7 @@ export type Cert = {
   status: string; statusCls: string; link?: string;
 };
 export const certs: Cert[] = [
+  { kind: "AWARDS", icon: "🏆", bg: "rgba(255,215,0,0.12)", name: "WhatsPlan — 4th Place Winner (KD Team Vote)", org: "Kracked Devs (KD) Vibe-A-Thon (4-Day Hackathon)", status: "JUNE 2026", statusCls: "status-done", link: "https://youtu.be/W72gATWWjUI?si=X4GM3LydOBhwPnFt" },
   { kind: "AWARDS", icon: "🥇", bg: "rgba(255,215,0,0.12)", name: "Obstacle Avoidance Robot — 1st Place", org: "GIKI Innovation Summit", status: "FEB 2025", statusCls: "status-done" },
   { kind: "AWARDS", icon: "🥇", bg: "rgba(255,215,0,0.12)", name: "Line Following Robot — 1st Place", org: "National Electronics Olympiad", status: "DEC 2024", statusCls: "status-done" },
   { kind: "RESEARCH", icon: "🧠", bg: "rgba(139,92,246,0.12)", name: "EEG Alzheimer's Classification (97.71%)", org: "Air University NeuroImaging Lab", status: "IN PROGRESS", statusCls: "status-prog", link: "https://www.linkedin.com/in/fatima-rehman09" },
