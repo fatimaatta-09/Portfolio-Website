@@ -141,6 +141,7 @@ export const skillTree: SkillBranch[] = [
 
 
 export const tools = [
+  ["💬","WhatsPlan"],["🧩","Chrome Extension"],
   ["🎨","Canva"],["🖌","Figma"],["🖋","Typography"],["📐","Layout & Grid"],
   ["✨","Poster Design"],["📱","Social Media"],["🎞","Visual Storytelling"],["💡","Creative Strategy"],
   ["🔓","Burp Suite"],["🦈","Wireshark"],["🕷","OWASP ZAP"],["🎣","GoPhish"],
