@@ -668,8 +668,19 @@ body.vibe-mode .win.active{
 }
 
 /* FR-OS overrides for full viewport */
-html, body { height: 100%; }
-body { min-height: 100vh; height: 100vh; }
+html, body {
+  height: 100%;
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+  overflow-x: hidden;
+}
+body {
+  min-height: 100vh;
+  height: 100vh;
+  position: relative;
+  touch-action: manipulation;
+}
 
 /* shimmer for skill bars */
 .skill-bar-fill.shimmer { position: relative; overflow: hidden; }
