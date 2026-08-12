@@ -2090,6 +2090,112 @@ html { scroll-behavior: smooth; }
   }
 }
 
-
-
-
+/* ============ ACHIEVEMENTS ============ */
+.achievements-body {
+  padding: 16px;
+}
+.achievements-intro {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font2);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.achievement-card {
+  background: rgba(0,200,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 
+    0 4px 20px rgba(0,0,0,0.5),
+    inset 1px 1px 0 rgba(255,255,255,0.05);
+}
+.achievement-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--ach-color);
+  background: rgba(255,255,255,0.03);
+  box-shadow: 
+    0 12px 30px rgba(0,0,0,0.7),
+    0 0 40px var(--ach-glow),
+    inset 2px 2px 0 rgba(255,255,255,0.1);
+}
+.achievement-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: skewX(-20deg);
+  transition: 0.5s;
+}
+.achievement-card:hover::before {
+  left: 150%;
+}
+.achievement-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--ach-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  position: relative;
+  box-shadow: 
+    0 0 20px var(--ach-glow),
+    inset 2px 2px 4px rgba(255,255,255,0.5),
+    inset -2px -2px 6px rgba(0,0,0,0.4);
+}
+.achievement-icon {
+  font-size: 32px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+}
+.achievement-tier {
+  position: absolute;
+  bottom: -4px;
+  background: #222;
+  color: #fff;
+  border: 1px solid var(--ach-color);
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-family: var(--font);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.achievement-name {
+  font-family: var(--font3);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+.achievement-desc {
+  font-size: 10px;
+  color: var(--text2);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.achievement-date {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 0.5px;
+}

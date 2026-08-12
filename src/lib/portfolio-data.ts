@@ -231,6 +231,7 @@ export const dockItems = [
   { id: "tools", icon: "🛡", label: "Tools", bg: "linear-gradient(135deg,rgba(248,113,113,0.5),rgba(251,146,60,0.4))" },
   { id: "research", icon: "🧠", label: "Research", bg: "linear-gradient(135deg,rgba(167,139,250,0.5),rgba(125,211,252,0.4))" },
   { id: "certs", icon: "🏆", label: "Certs", bg: "linear-gradient(135deg,rgba(252,211,77,0.55),rgba(251,146,60,0.4))" },
+  { id: "achievements", icon: "🏅", label: "Badges", bg: "linear-gradient(135deg,rgba(14,165,233,0.55),rgba(45,212,191,0.4))" },
   { sep: true } as never,
   { id: "contact", icon: "✉", label: "Contact", bg: "linear-gradient(135deg,rgba(110,231,183,0.45),rgba(125,211,252,0.35))" },
   { id: "resume", icon: "📄", label: "Resume", bg: "linear-gradient(135deg,rgba(252,211,77,0.45),rgba(251,191,36,0.35))" },
@@ -241,6 +242,7 @@ export const desktopIcons = [
   { id: "design", icon: "🎨", label: "Design", bg: "linear-gradient(135deg,rgba(255,64,129,0.45),rgba(252,211,77,0.4))" },
   { id: "skills", icon: "⚡", label: "Skills", bg: "linear-gradient(135deg,rgba(167,139,250,0.45),rgba(244,114,182,0.4))" },
   { id: "certs", icon: "🏆", label: "Certs", bg: "linear-gradient(135deg,rgba(252,211,77,0.45),rgba(251,146,60,0.4))" },
+  { id: "achievements", icon: "🏅", label: "Badges", bg: "linear-gradient(135deg,rgba(14,165,233,0.45),rgba(45,212,191,0.4))" },
   { id: "contact", icon: "✉", label: "Hire Me", bg: "linear-gradient(135deg,rgba(110,231,183,0.45),rgba(125,211,252,0.4))" },
 ];
 
@@ -252,6 +254,7 @@ export const defaultPositions: Record<string, { x: number; y: number; w: number;
   design: { x: 60, y: 20, w: 520, h: 520 },
   tools: { x: 180, y: 40, w: 380, h: 360 },
   certs: { x: 220, y: 60, w: 400, h: 420 },
+  achievements: { x: 240, y: 50, w: 460, h: 420 },
   research: { x: 260, y: 30, w: 420, h: 380 },
   contact: { x: 300, y: 50, w: 360, h: 460 },
   resume: { x: 80, y: 20, w: 560, h: 520 },
@@ -265,7 +268,59 @@ export const windowTitles: Record<string, string> = {
   design: "🎨 design — portfolio.creative",
   tools: "🛡 tools — /usr/bin/",
   certs: "🏆 certifications — /certs/",
+  achievements: "🏅 badges — github_achievements",
   research: "🧠 research — neuro_ai_lab",
   contact: "✉ contact — send_message.sh",
   resume: "📄 resume — fatima_rehman.pdf",
 };
+
+export type Achievement = {
+  id: string;
+  name: string;
+  tier?: string;
+  desc: string;
+  icon: string;
+  color: string;
+  glow: string;
+  date: string;
+};
+
+export const achievements: Achievement[] = [
+  {
+    id: "pull-shark",
+    name: "Pull Shark",
+    tier: "x16",
+    desc: "Opened 16 pull requests that have been merged.",
+    icon: "🦈",
+    color: "linear-gradient(135deg, #0ea5e9, #2dd4bf)",
+    glow: "rgba(14, 165, 233, 0.6)",
+    date: "Aug 2026",
+  },
+  {
+    id: "yolo",
+    name: "YOLO",
+    desc: "Merged a pull request without code review.",
+    icon: "🚀",
+    color: "linear-gradient(135deg, #f43f5e, #f97316)",
+    glow: "rgba(244, 63, 94, 0.6)",
+    date: "Jul 2026",
+  },
+  {
+    id: "galaxy-brain",
+    name: "Galaxy Brain",
+    desc: "Had 2 discussions answered.",
+    icon: "🧠",
+    color: "linear-gradient(135deg, #8b5cf6, #d946ef)",
+    glow: "rgba(139, 92, 246, 0.6)",
+    date: "Jun 2026",
+  },
+  {
+    id: "quickdraw",
+    name: "Quickdraw",
+    desc: "Closed an issue or pull request within 5 minutes of opening.",
+    icon: "⚡",
+    color: "linear-gradient(135deg, #eab308, #22c55e)",
+    glow: "rgba(234, 179, 8, 0.6)",
+    date: "May 2026",
+  },
+];
