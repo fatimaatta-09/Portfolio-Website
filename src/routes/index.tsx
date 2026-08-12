@@ -456,6 +456,7 @@ function FROS() {
           <ResumeStatus url={RESUME_URL} compact />
           <div className="topbar-indicator"><div className="status-dot dot-green pulse" /><span style={{ fontSize: 9 }}>Available</span></div>
           <div className="topbar-indicator"><div className="status-dot dot-cyan" /><span style={{ fontSize: 9 }}>ONLINE</span></div>
+          <div className="topbar-indicator" style={{ opacity: 0.5 }}><span style={{ fontSize: 8, letterSpacing: 1 }}>v3.2</span></div>
           <div id="clock">{clock}</div>
         </div>
       </div>
