@@ -1870,6 +1870,9 @@ function Contact({ actions }: { actions: WinActions }) {
           </div>
         )}
       </div>
+      <div style={{ marginTop: 16, paddingTop: 10, borderTop: "1px solid rgba(255,255,255,0.06)", fontSize: 9, color: "var(--text3)", textAlign: "center" as const, letterSpacing: 0.5 }}>
+        © {new Date().getFullYear()} Fatima Rehman · Built with React & TanStack
+      </div>
     </div>
   );
 }
