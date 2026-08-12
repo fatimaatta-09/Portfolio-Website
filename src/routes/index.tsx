@@ -543,7 +543,7 @@ function FROS() {
           const isWin = !!wins[item.id];
           const isOpen = isWin && wins[item.id].open;
           return (
-            <div key={item.id} className={"dock-item" + (popping === item.id ? " icon-pop" : "")} style={{ ["--icon-color" as never]: ICON_COLORS[item.id] }} title={item.label} onClick={(e) => (isOpen ? closeWin(item.id) : openWin(item.id, e))}>
+            <div key={item.id} className={"dock-item" + (popping === item.id ? " icon-pop" : "")} style={{ ["--icon-color" as never]: ICON_COLORS[item.id] }} title={item.label} role="button" aria-label={`${isOpen ? "Close" : "Open"} ${item.label}`} tabIndex={0} onClick={(e) => (isOpen ? closeWin(item.id) : openWin(item.id, e))} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); isOpen ? closeWin(item.id) : openWin(item.id); } }}>
               <div className="dock-icon" style={{ background: item.bg }}>
                 {ICONS[item.id] ? <AppIcon id={item.id} size={20} /> : item.icon}
               </div>
