@@ -933,6 +933,10 @@ function Terminal({ actions }: { actions: WinActions }) {
         out.push({ kind: "out", text: "    ╱   dragon    ╲Kernel:    6.6.0-fr-amd64" });
         out.push({ kind: "out", text: "                    Shell:     fr-shell 5.2" });
         out.push({ kind: "out", text: "                    Uptime:    " + Math.floor(performance.now()/1000) + "s" });
+        out.push({ kind: "out", text: "                    Resolution:" + window.innerWidth + "x" + window.innerHeight });
+        out.push({ kind: "out", text: "                    WM:        FR-OS Desktop v3.2" });
+        out.push({ kind: "out", text: "                    Theme:     Cyberpunk Dark [GTK3]" });
+        out.push({ kind: "out", text: "                    Packages:  11 (npm)" });
         out.push({ kind: "out", text: "                    Focus:     Cybersecurity · AI/ML" });
         break;
       case "skills":
