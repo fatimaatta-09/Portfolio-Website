@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   profile, projects, tools, certs, skillTree,
-  dockItems, desktopIcons, defaultPositions, windowTitles, designProjects,
+  dockItems, desktopIcons, defaultPositions, windowTitles, designProjects, achievements,
 } from "@/lib/portfolio-data";
 // contact form posts directly to Web3Forms; no backend client needed
 import dragonAsset from "@/assets/kali-dragon.png";
@@ -45,7 +45,7 @@ const WEB3FORMS_ACCESS_KEY = "b5e09d6c-d151-460d-b38f-0007a4872635";
 const ICONS: Record<string, LucideIcon> = {
   terminal: TerminalSquare, about: Fingerprint, skills: Cpu, projects: Network,
   design: Sparkles, tools: ScanSearch, research: IconBrain, certs: Award,
-  contact: IconMail, resume: IconFile,
+  achievements: Medal, contact: IconMail, resume: IconFile,
 };
 
 // MD Accent palette — built for dark backgrounds, high contrast, matte
@@ -58,6 +58,7 @@ const ICON_COLORS: Record<string, string> = {
   tools:    "#FF5252",
   research: "#E040FB",
   certs:    "#FFD740",
+  achievements: "#0ea5e9",
   contact:  "#1DE9B6",
   resume:   "#FF6D00",
 };
@@ -632,6 +633,7 @@ function WindowBody({ name, actions }: { name: string; actions: WinActions }) {
     case "design": return <DesignPortfolio />;
     case "tools": return <Tools />;
     case "certs": return <Certs />;
+    case "achievements": return <Achievements />;
     case "research": return <Research />;
     case "contact": return <Contact actions={actions} />;
     case "resume": return <ResumeViewer />;
@@ -641,10 +643,10 @@ function WindowBody({ name, actions }: { name: string; actions: WinActions }) {
 
 /* ============ TERMINAL ============ */
 const TERM_COMMANDS = [
-  "help","whoami","about","skills","projects","certs","tools","contact",
+  "help","whoami","about","skills","projects","certs","achievements","tools","contact",
   "github","linkedin","email","resume","open","ls","pwd","cd","tree","find",
   "date","neofetch","cat","echo","vibe","sudo","exit","clear","hire","research",
-  "history","banner","inbox","design","canva","figma","whatsplan",
+  "history","banner","inbox","design","canva","figma","whatsplan","pullshark",
 ] as const;
 
 const RESUME_URL = "/fatima_resume_v5.pdf";
@@ -827,6 +829,7 @@ function Terminal({ actions }: { actions: WinActions }) {
         out.push({ kind: "grid", items: [
           "whoami","skills","projects","certs",
           "research","contact","github","linkedin",
+          "achievements","pullshark",
           "email","resume","tools","neofetch",
           "ls","cd","tree","find","cat","pwd",
           "history","banner","hire","clear",
@@ -857,9 +860,15 @@ function Terminal({ actions }: { actions: WinActions }) {
       case "about":
       case "research":
       case "contact":
+      case "achievements":
       case "inbox":
         out.push({ kind: "out", text: "→ opening " + c + " window…", cls: "term-success" });
         setTimeout(() => actions.openWin(c === "inbox" ? "contact" : c), 250);
+        break;
+      case "pullshark":
+        out.push({ kind: "out", text: "[ACHIEVEMENT UNLOCKED] Pull Shark x16", cls: "term-highlight" });
+        out.push({ kind: "out", text: "🦈 16 Pull Requests Merged! Launching badges...", cls: "term-success" });
+        setTimeout(() => actions.openWin("achievements"), 500);
         break;
       case "pwd": out.push({ kind: "out", text: cwd }); break;
       case "date": out.push({ kind: "out", text: new Date().toString() }); break;
@@ -1612,6 +1621,37 @@ function Certs() {
   );
 }
 
+/* ============ ACHIEVEMENTS ============ */
+function Achievements() {
+  return (
+    <div className="achievements-body">
+      <div className="achievements-intro">
+        <Medal size={16} strokeWidth={2} style={{ color: "var(--cyan)" }} />
+        <span>GitHub Achievements & Badges</span>
+      </div>
+      <div className="achievements-grid">
+        {achievements.map((ach) => (
+          <div
+            key={ach.id}
+            className="achievement-card"
+            style={{ ["--ach-color" as any]: ach.color, ["--ach-glow" as any]: ach.glow }}
+          >
+            <div className="achievement-icon-wrap">
+              <div className="achievement-icon">{ach.icon}</div>
+              {ach.tier && <div className="achievement-tier">{ach.tier}</div>}
+            </div>
+            <div className="achievement-info">
+              <div className="achievement-name">{ach.name}</div>
+              <div className="achievement-desc">{ach.desc}</div>
+              <div className="achievement-date">Unlocked: {ach.date}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ============ RESEARCH ============ */
 function Research() {
   return (
@@ -1831,6 +1871,7 @@ const PALETTE_ITEMS: { id: string; label: string; hint: string; kbd?: string }[]
   { id: "tools",    label: "Tools",     hint: "security stack" },
   { id: "research", label: "Research",  hint: "EEG · neuro-AI" },
   { id: "certs",    label: "Certs",     hint: "awards · education" },
+  { id: "achievements", label: "Badges", hint: "github achievements" },
   { id: "contact",  label: "Contact",   hint: "deploy a message" },
 ];
 function CommandPalette({ onClose, onPick }: { onClose: () => void; onPick: (id: string) => void }) {
