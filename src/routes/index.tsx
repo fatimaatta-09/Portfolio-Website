@@ -431,6 +431,9 @@ function FROS() {
             <div className="boot-line">[ OK ] Starting desktop environment...</div>
             <div className="boot-line" style={{ color: "var(--cyan)" }}>[ OK ] Welcome, Fatima Rehman ✓</div>
           </div>
+          <div className="boot-hint" style={{ marginTop: 12, fontSize: 10, color: "var(--text3)", letterSpacing: 1 }}>
+            Press Ctrl+K to open command palette · T for terminal
+          </div>
         </div>
       )}
 
