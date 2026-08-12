@@ -464,7 +464,7 @@ function FROS() {
       <div className="desktop" ref={deskRef}>
         <div className="icon-grid">
           {desktopIcons.map(d => (
-            <div key={d.id} className={"desk-icon" + (popping === d.id ? " icon-pop" : "")} style={{ ["--icon-color" as never]: ICON_COLORS[d.id] }} onClick={(e) => openWin(d.id, e)}>
+            <div key={d.id} className={"desk-icon" + (popping === d.id ? " icon-pop" : "")} style={{ ["--icon-color" as never]: ICON_COLORS[d.id] }} title={`Open ${d.label}`} onClick={(e) => openWin(d.id, e)}>
               <div className="desk-icon-img" style={{ background: d.bg }}>
                 {ICONS[d.id] ? <AppIcon id={d.id} size={26} /> : d.icon}
               </div>
